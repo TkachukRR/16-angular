@@ -1,0 +1,19 @@
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 64px;
+}
+
+.header {
+    font-family: 'Inter';
+    font-weight: 600;
+
+    border-bottom: 1px solid rgba(48, 50, 71, 0.1);
+
+    h1 {
+        font-size: 30px;
+        line-height: 36px;
+
+        color: #303247;
+    }
+}
