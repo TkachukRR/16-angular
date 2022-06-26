@@ -1,10 +1,10 @@
-<!-- <div class="overlay" *ngIf="hide">
+<!-- <div class="overlay" *ngIf="hidden">
     <div class="modal loan">
-        <button class="modal__closed" (click)="hideModal()"></button>
+        <button class="modal__closed" (click)="hidden=false"></button>
         <h3 class="loan__title">Invest in Loan</h3>
-        <h4 class="loan__name">Loan title you’ve clicked</h4>
-        <p class="loan__amount">Amount available: $12,362</p>
-        <p class="loan__time">Loan ends in: 1 month 10 days</p>
+        <h4 class="loan__name">{{activeLoan.title}}</h4>
+        <p class="loan__amount">Amount available: {{activeLoan.available}}</p>
+        <p class="loan__time">Loan ends in: {{activeLoan.term_remaining}}</p>
         <h4 class="loan__investment">Investment amount</h4>
         
         <input dir="rtl" class="loan_input" type="text">

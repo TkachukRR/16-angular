@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { loans } from './current-loans';
+import data from './current-loans.json';
 
 @Component({
   selector: 'app-card',
@@ -8,7 +8,18 @@ import { loans } from './current-loans';
 })
 export class CardComponent implements OnInit {
 
-  loans = loans
+  loans = data.loans
+
+  activeLoan = {
+    "id": "",
+    "title": "",
+    "tranche": "",
+    "available": "",
+    "annualised_return": "",
+    "term_remaining": "",
+    "ltv": "",
+    "amount": ""
+  }
 
   constructor() { }
 
@@ -17,12 +28,16 @@ export class CardComponent implements OnInit {
 
   hidden = false
 
-  showModal() {
+  showModal(loan: any) {
+    this.activeLoan = loan
     this.hidden = !this.hidden
   }
 
-  
-  currentTotalAvailable() {
+  convertSum = this.loans.reduce((accumulator, object) => {
+    return accumulator + Number(object.available.replace(",", ""));
+  }, 0);
 
-  }
+  sum = this.convertSum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+

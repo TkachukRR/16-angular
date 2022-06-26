@@ -1,31 +1,29 @@
 <div class="container">
 
-
     <div class="card" *ngFor="let loan of loans">
-        <div class="overlay" *ngIf="hidden">
-            <div class="modal loan">
-                <button class="modal__closed" (click)="showModal()"></button>
-                <h3 class="loan__title">Invest in Loan</h3>
-                <h4 class="loan__name">{{loan.title}}</h4>
-                <p class="loan__amount">Amount available: {{loan.available}}</p>
-                <p class="loan__time">Loan ends in: {{loan.term_remaining}}</p>
-                <h4 class="loan__investment">Investment amount</h4>
-                
-                <input dir="rtl" class="loan_input" type="text">
-                <button class="loan_btn" type="submit">Invest</button>
-            </div>
-        </div>
-
-
         <div class="card__information">
             <h2 class="card__title">{{loan.title}}</h2>
             <p class="card__description">Available: {{loan.available}}</p>
         </div>
-        <button class="card__btn" (click)="showModal()">Invest</button>
+        <button class="card__btn" (click)="showModal(loan)">Invest</button>
+    </div>
+
+    <div class="overlay" *ngIf="hidden">
+        <div class="modal loan">
+            <button class="modal__closed" (click)="hidden=false"></button>
+            <h3 class="loan__title">Invest in Loan</h3>
+            <h4 class="loan__name">{{activeLoan.title}}</h4>
+            <p class="loan__amount">Amount available: {{activeLoan.available}}</p>
+            <p class="loan__time">Loan ends in: {{activeLoan.term_remaining}}</p>
+            <h4 class="loan__investment">Investment amount</h4>
+
+            <input dir="rtl" class="loan_input" type="text" [(ngModel)]="activeLoan.amount">
+            <button class="loan_btn" type="submit" >Invest</button>
+        </div>
     </div>
 
     <div class="total">
         <p class="total__text">Total amount available for investment:</p>
-        <p class="total__money">{{currentTotalAvailable()}}</p>
+        <p class="total__money">{{sum}}</p>
     </div>
 </div>
